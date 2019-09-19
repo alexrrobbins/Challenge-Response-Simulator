@@ -30,3 +30,16 @@ class Server():
                 print("User ID invalid.")
             else:
                 user_found = True
+                h = H()
+                r = random.random()
+                f = F()
+                return [r,h,f]
+
+class H():
+    def hash_func(self,password_plaintext):
+        return hash(password_plaintext)
+
+class F():
+    def one_way_func(self,r,hash):
+        # TODO: Put a better function
+        return r + hash

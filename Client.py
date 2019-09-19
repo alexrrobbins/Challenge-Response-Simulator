@@ -2,4 +2,5 @@ from Server import Server
 
 s = Server()
 
-s.request_id()
+response = s.request_id()
+print(response)
