@@ -1,6 +1,7 @@
 from User import User
 import re
 import csv
+import random
 
 class Server():
 
@@ -15,3 +16,17 @@ class Server():
                 u = User(row['username'], row['password'])
                 self.user_array.append(u)
         file.close()
+
+    # This method gets the ID from the user and checks against "database"
+    def request_id(self):
+        user_found = False
+        while not user_found:
+            input_id = input("Please enter user ID: ")
+            match = False
+            for user in self.user_array:
+                if user.getUserID() == input_id:
+                    match = True
+            if not match:
+                print("User ID invalid.")
+            else:
+                user_found = True

@@ -6,3 +6,6 @@ class User():
 
     def getHash(self):
         return self.passwordHash
+
+    def getUserID(self):
+        return self.userID
