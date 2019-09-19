@@ -1,3 +1,7 @@
+# COSC 316-001 Assignment 1
+# Written by Alex Robbins, 2019
+# For educational purposes only.
+
 from User import User
 import re
 import csv

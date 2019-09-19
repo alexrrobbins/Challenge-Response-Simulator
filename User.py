@@ -1,3 +1,8 @@
+# COSC 316-001 Assignment 1
+# Written by Alex Robbins, 2019
+# For educational purposes only.
+
+
 # This is the User class for storing user data
 # (which would otherwise be on a database in a real-world scenario)
 # Similar to the server program, a segment of code for hashing was taken from:
