@@ -33,6 +33,7 @@ class Server():
             if not match:
                 print("User ID invalid.")
             else:
+                # Server sends r, h, f to client
                 user_found = True
                 h = H()
                 r = random.random()
@@ -40,9 +41,13 @@ class Server():
                 self.save_nonce(r)
                 return [r,h,f]
 
+    # This method ensures the nonce is saved for the current session
     def save_nonce(self,r):
         self.r = r
 
+    # Server produces f(r, h(P)),
+    # checks it against client value,
+    # logs in if they match
     def verify_password(self,reply):
         temp_hash = self.u.getHash()
         temp_result = F().f(self.r,temp_hash)
@@ -51,7 +56,9 @@ class Server():
         else:
             return False
 
-
+# This class holds the hashing algorithm (h) that the client and server will use.
+# A segment of code was taken from the following website:
+# https://stackoverflow.com/questions/40351791/how-to-hash-strings-into-a-float-in-01
 class H():
     def bytes_to_float(self,b):
         return float(crc32(b) & 0xffffffff) / 2**32
@@ -65,7 +72,8 @@ class H():
         float_password = self.str_to_float( hashed_password )
         return float_password
 
+# This class represents the one-way function (f)
 class F():
     def f(self,r,hash):
-        # TODO: Put a better function
+        # TODO: Put a better function - this one is sort of weak
         return r + hash

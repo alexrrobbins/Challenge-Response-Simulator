@@ -1,4 +1,10 @@
+# This is the User class for storing user data
+# (which would otherwise be on a database in a real-world scenario)
+# Similar to the server program, a segment of code for hashing was taken from:
+# https://stackoverflow.com/questions/40351791/how-to-hash-strings-into-a-float-in-01
+
 from zlib import crc32
+
 class User():
 
     def __init__(self,userID,passwordHash):
