@@ -9,7 +9,7 @@ class Server():
     def __init__(self):
         file = open("passwords.csv", 'r')
         self.user_array = []
-
+        self.r = 0
         with open("passwords.csv", newline='') as file:
             reader = csv.DictReader(file)
             for row in reader:
@@ -33,13 +33,21 @@ class Server():
                 h = H()
                 r = random.random()
                 f = F()
+                self.save_nonce(r)
                 return [r,h,f]
 
+    def save_nonce(self,r):
+        self.r = r
+
+    def verify_password(self,reply):
+        
+
+
 class H():
-    def hash_func(self,password_plaintext):
+    def h(self,password_plaintext):
         return hash(password_plaintext)
 
 class F():
-    def one_way_func(self,r,hash):
+    def f(self,r,hash):
         # TODO: Put a better function
         return r + hash
