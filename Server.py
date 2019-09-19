@@ -10,6 +10,7 @@ class Server():
         file = open("passwords.csv", 'r')
         self.user_array = []
         self.r = 0
+        self.u = ''
         with open("passwords.csv", newline='') as file:
             reader = csv.DictReader(file)
             for row in reader:
@@ -26,6 +27,7 @@ class Server():
             for user in self.user_array:
                 if user.getUserID() == input_id:
                     match = True
+                    self.u = user
             if not match:
                 print("User ID invalid.")
             else:
@@ -40,7 +42,7 @@ class Server():
         self.r = r
 
     def verify_password(self,reply):
-        
+        pass
 
 
 class H():
